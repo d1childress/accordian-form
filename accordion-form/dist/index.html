@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" class="preload">
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - accordion form</title>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel="stylesheet" href="./style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<article>
+  <section class="pane notification preload">
+    <div class="inner">
+      <h1>Your preferences have been saved! <a href="javascript: unsubmit();" style="float: right;">Reset</a></h1>
+    </div>
+  </section>
+  <section class="pane active">
+    <div class="inner">
+      <h1>about yourself</h1>
+      <section class="item">
+        <label for="fullname"> name </label>
+        <input id="fullname" placeholder="D. Childress" autofocus></input>
+      </section>
+      <section class="item">
+        <label for="address"> from</label>
+        <input id="address" placeholder="Chicago, United States"></input>
+      </section>
+      <section class="item">
+        <label for="email"> available at</label>
+        <input id="email" placeholder="john-doe@gmail.com"></input>
+      </section>
+    </div>
+  </section>
+  <section class="pane">
+    <div class="inner">
+      <h1>personalize your experience</h1>
+      <section class="item">
+        <label for="favoriteColor">my favorite color is</label>
+        <input id="favoriteColor" placeholder="Blue"></input>
+      </section>
+      <section class="item">
+        <label for="environment"> prefer to code </label>
+        <select id="environment">
+          <option value="environment-music">with music</option>
+          <option value="environment-silence">in total silence</option>
+        </select>
+      </section>
+      <section class="item">
+        <label for="slideshow">show me random images of</label>
+        <input id="slideshow" placeholder="space"></input>
+      </section>
+    </div>
+  </section>
+  <section class="pane">
+    <div class="inner">
+      <h1>skills</h1>
+      <section class="item">
+        <label for="bestSkill">most comfortable with</label>
+        <select id="bestSkill">
+          <option value="frontEnd">front-end</option>
+          <option value="backEnd">back-end</option>
+        </select>
+        <label for="bestSkill">technologies</label>
+      </section>
+      <section class="item">
+        <label for="hobby">also I enjoy</label>
+        <select id="hobby">
+          <option value="hobby-photography"></option>
+          <option value="hobby-musicPlaying">Music Playing</option>
+          <option value="hobby-sports">Sports</option>
+          <option value="hobby-traveling">Traveling</option>
+        </select>
+      </section>
+    </div>
+  </section>
+  <a href="#" class="pane submit">
+    <div class="inner">
+      <h1>Submit</h1>
+    </div>
+  </a>
+</article>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>

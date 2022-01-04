@@ -1,0 +1,220 @@
+@import "compass/css3";
+
+// Form Container
+// ==============
+article {
+  width: 800px;
+  margin: 50px auto;
+  position: relative;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+// Accordion Pane
+// ==============
+.pane {
+  display: block;
+  overflow: hidden;
+  transition: max-height 500ms, border-radius 500ms;
+  box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.3), 
+              inset 0px 1px 1px 0px rgba(0,0,0,0.3);
+  
+  &:not(.locked):nth-child(2) {
+    @extend .orange-gradient;
+  }
+  
+  &:not(.locked):nth-child(3) {
+    @extend .turquoise-gradient;
+  }
+  
+  &:not(.locked):nth-child(4) {
+    @extend .red-gradient;
+  }
+  
+  h1 {
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  
+  &.active {
+    max-height: 1000px;
+  }
+  
+  &:not(.active) {
+    max-height: 37px;
+    
+    &:not(.locked):not(.submit):hover {
+      @extend .light-gray-gradient;
+    }
+  }
+  
+  &:not(.locked) .item:hover {
+    @extend .translucent-gray-gradient;
+  }
+  
+  &:nth-child(2) {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+  
+  &:last-child {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+}
+
+// Accordion Pane States
+// =====================
+.pane {
+  &.locked {
+    background: #eee;
+    box-shadow: none;
+    border-radius: 0;
+    transition: max-height 500ms, border-radius 0ms;
+  }
+  
+  &.submit {
+    cursor: pointer;
+    @extend .dark-gray-gradient;
+    
+    &:hover {
+      @extend .green-gradient;
+    }
+    
+    &:focus {
+      @extend .green-gradient;
+    }
+  }
+  
+  &.notification {
+    @extend .yellow-gradient;
+    
+    &:not(.preload) {
+      transition: margin-top 500ms;
+    }
+    &.active {
+      max-height: 37px;
+    }
+    &:not(.active) {
+      margin-top: -37px;
+    }
+  }
+}
+
+// Form Item
+// =========
+.item {
+  padding: 5px;
+  border-radius: 5px;
+  
+  input, select {
+    background: transparent;
+    display: inline-block;
+    border: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    outline: none;
+  }
+  input {
+    width: 70%;
+  }
+  select:not(:focus) {
+    appearance: none;
+  }
+}
+
+// Inner Layout
+// ============
+.inner {
+  width: 790px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+// Gradient Classes
+// ================
+.gray-gradient {
+  background-color: #bdc3c7;
+  @include filter-gradient(#bdc3c7, #ecf0f1, vertical);
+  @include background-image(linear-gradient(top,  #bdc3c7 0%,#ecf0f1 100%));
+}
+
+.light-gray-gradient {
+  background-color: rgb(189,195,199);
+  @include background-image(linear-gradient(top, rgba(189,195,199,1) 25%, rgba(236,240,241,1) 100%));
+}
+
+.dark-gray-gradient {
+  background-color: rgb(149,165,166);
+  @include filter-gradient(#95a5a6, #7f8c8d, vertical);
+  @include background-image(linear-gradient(top,  rgba(149,165,166,1) 0%,rgba(127,140,141,1) 100%));
+}
+
+.translucent-gray-gradient {
+  @include background-image(linear-gradient(top,  rgba(189,195,199,0.25) 0%,rgba(209,214,213,0.25) 100%));
+}
+
+.orange-gradient {
+  background-color: rgb(211,84,0);
+  @include filter-gradient(#d35400, #e67e22, vertical);
+  @include background-image(linear-gradient(top,  rgba(211,84,0,1) 0%,rgba(230,126,34,1) 100%));
+}
+
+.turquoise-gradient {
+  background-color: rgb(22,160,133);
+  @include filter-gradient(#16a085, #1abc9c, vertical);
+  @include background-image(linear-gradient(top,  rgba(22,160,133,1) 0%,rgba(26,188,156,1) 100%));
+}
+
+.red-gradient {
+  background-color: rgb(192,57,43);
+  @include filter-gradient(#c0392b, #e74c3c, vertical);
+  @include background-image(linear-gradient(top,  rgba(192,57,43,1) 0%,rgba(231,76,60,1) 100%));
+}
+
+.green-gradient {
+  background-color: #27ae60;
+  @include filter-gradient(#27ae60, #2ecc71, vertical);
+  @include background-image(linear-gradient(top,  #27ae60 0%,#2ecc71 100%));
+}
+
+.yellow-gradient {
+  background-color: rgb(243,156,18);
+  @include filter-gradient(#f39c12, #f1c40f, vertical);
+  @include background-image(linear-gradient(top,  rgba(243,156,18,1) 0%,rgba(241,196,15,1) 100%));
+}
+
+// General Rules
+// =============
+html:not(.preload) > body {
+  transition: background 500ms;
+}
+
+a.pane {
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+}
+
+body {
+  background: #222;
+  width: 100%;
+  height: 100%;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  overflow-y: scroll;
+  
+  &.locked {
+    background: #eee;
+  }
+}
+
+::-webkit-input-placeholder { color: #333; }
+::-moz-placeholder { color:#333; }
+:-ms-input-placeholder { color:#333; }
+input:-moz-placeholder { color:#333; }
+
+* { box-sizing: border-box; }
